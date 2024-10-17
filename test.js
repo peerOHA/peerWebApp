@@ -1,27 +1,21 @@
 async function registerUser(email, password, username) {
     const query = `
-        mutation Register($input: RegisterInput!) {
-            register(input: $input) {
-                status
-                errorMessage
-                userid
-            }
-        }
+        query Hello {
+    hello {
+        root
+        args
+        context
+        currentuserid
+    }
     `;
 
-    const variables = {
-        input: {
-            email: email,
-            password: password,
-            username: username
-        }
-    };
+    const variables = {};
 
     try {
         const response = await fetch('https://getpeer.eu/graphql', {
             method: 'POST',
             headers: {
-                // 'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 query: query,
@@ -34,12 +28,8 @@ async function registerUser(email, password, username) {
         }
 
         const result = await response.json();
-        
-        if (result.data.register.status === "success") {
-            console.log("Registrierung erfolgreich! Benutzer-ID:", result.data.register.userid);
-        } else {
-            console.error("Fehler bei der Registrierung:", result.data.register.errorMessage);
-        }
+
+        console.log("hello erfolgreich!", result);
     } catch (error) {
         console.error("Ein Fehler ist aufgetreten:", error);
     }
