@@ -80,6 +80,7 @@ body {
     /* 48px von 3840px */
     text-align: center;
     letter-spacing: 0.02em;
+    text-align: right;
 }
 
 .input-field {
@@ -127,6 +128,7 @@ body {
     margin: 5vh 0;
     /* 96px von 2160px */
     padding: 1.5vh;
+    cursor: pointer;
 }
 
 .signIn {
